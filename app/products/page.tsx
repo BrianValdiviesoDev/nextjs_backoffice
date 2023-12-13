@@ -18,8 +18,8 @@ import { useRouter } from 'next/navigation';
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
-  const router = useRouter()
-  
+  const router = useRouter();
+
   useEffect(() => {
     const getData = async () => {
       const products = await getAllProducts();
@@ -30,18 +30,21 @@ export default function Products() {
   return (
     <>
       <Grid container spacing={2}>
-      <Grid item xs={8}>
-        <Typography variant='h2'>
-          Products
-        </Typography>
+        <Grid item xs={8}>
+          <Typography variant="h2">Products</Typography>
         </Grid>
         <Grid item xs={4}>
-          <Grid container  justifyContent='flex-end'>
-          <Button variant="contained" onClick={() => {router.push('/products/new')}}>
-            Add product
-          </Button>
+          <Grid container justifyContent="flex-end">
+            <Button
+              variant="contained"
+              onClick={() => {
+                router.push('/products/new');
+              }}
+            >
+              Add product
+            </Button>
           </Grid>
-          </Grid>
+        </Grid>
       </Grid>
       <Table>
         <TableHead>
@@ -52,18 +55,17 @@ export default function Products() {
           <TableBody>
             {products.map((product) => (
               <TableRow key={product._id}>
-
                 <TableCell>{product.name}</TableCell>
                 <TableCell>
-                  <EditIcon onClick={() =>  router.push(`/products/${product._id}`)} />
+                  <EditIcon
+                    onClick={() => router.push(`/products/${product._id}`)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </TableHead>
       </Table>
-
-      
     </>
   );
 }
