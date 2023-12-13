@@ -5,6 +5,7 @@ import { PaperbaseTheme } from './theme/paperbase';
 import Header from './components/header';
 import './global.scss';
 import { Box, CssBaseline } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
 
 export default function RootLayout({
   children,
@@ -38,7 +39,17 @@ export default function RootLayout({
       </Box>
 
 
-      
+      <ToastContainer 
+      position="bottom-left"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"/>
         </ThemeProvider>
       </body>
     </html>
